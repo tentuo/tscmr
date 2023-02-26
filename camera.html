@@ -1,0 +1,25 @@
+<script>
+	document.addEventListener("DOMContentLoaded", () => {
+	var but = document.getElementById("but");
+	var video = document.getElementById("vid");
+	var mediaDevices = navigator.mediaDevices;
+	but.addEventListener("click", () => {
+		// Accessing the user camera and video.
+		mediaDevices
+		.getUserMedia({
+			video: true,
+			audio: true,
+		})
+		.then((stream) => {
+			// Changing the source of video to current stream.
+			video.srcObject = stream;
+			video.addEventListener("loadedmetadata", () => {
+			video.play();
+			});
+		})
+	});
+	});
+</script>
+<div><video id="vid" width="300px" height="300px"></video></div>
+<button id="but" > Open WebCam </button>
+
